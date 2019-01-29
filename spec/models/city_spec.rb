@@ -7,30 +7,26 @@ RSpec.describe City, type: :model do
   end
 
   it "has a valid factory" do
-    expect(build(:city)).to be_valid
+    # vérifie si la factory est valide
   end
 
   context "validation" do
     it "is valid with valid attributes" do
-      expect(@city).to be_a(City)
+      # vérifie si la ville est bien valide
     end
     describe "#name" do
-      it { expect(@city).to validate_presence_of(:name) }
+      # vérifie la présence de name
 		end
 		describe "#zip_code" do
-		  it { expect(@city).to validate_presence_of(:zip_code) }
-      it { is_expected.to allow_value("33800").for(:zip_code) }
-      it { is_expected.to allow_value("05123").for(:zip_code) }
-      it { is_expected.to allow_value("2a004").for(:zip_code) }
-      it { is_expected.to allow_value("2A004").for(:zip_code) }
-      it { is_expected.to allow_value("95600").for(:zip_code) }
-      it { is_expected.to_not allow_value("100000").for(:zip_code) }
-      it { is_expected.to_not allow_value("0000").for(:zip_code) }
+      # vérifie la présence de zip_code
+      # vérifie l'unicité de zip_code
+      # verifie différentes valeurs de zip_code qui doivent être correctes
+      # vérifie différentes valeurs de zip_code qui ne doivent pas être correctes
 	  end
   end
 
   context "associations" do
-    it { expect(@city).to have_many(:listings) }
+    # vérifie qu'une ville a plusieurs logements
   end
 
 end

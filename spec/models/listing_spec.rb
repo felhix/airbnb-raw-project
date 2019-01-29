@@ -7,34 +7,43 @@ RSpec.describe Listing, type: :model do
   end
 
   it "has a valid factory" do
-    expect(build(:listing)).to be_valid
+    # vérifie si la factory est valide
   end
 
   context "validation" do
     it "is valid with valid attributes" do
-      expect(@listing).to be_a(Listing)
+      # vérifie si le logement est bien valide
     end
     describe "#available_beds" do
-      it { expect(@listing).to validate_presence_of(:available_beds) }
-      it { expect(@listing).to validate_numericality_of(:available_beds).is_greater_than(0) }
+      # vérifie que available_beds est bien obligatoire
+      # vérifie que available_beds est bien un integer strictement positif
+
 		end
     describe "#price" do
-      it { expect(@listing).to validate_presence_of(:price) }
-      it { expect(@listing).to validate_numericality_of(:price).is_greater_than(0) }
+      # vérifie que le prix est bien obligatoire
+      # vérifie que le prix est bien un integer strictement positif
 		end
     describe "#description" do
-      it { expect(@listing).to validate_presence_of(:description) }
-      it { expect(@listing).to validate_length_of(:description).is_at_least(140) }
+      # vérifie que la description est bien obligatoire
+      # vérifie que la description au bien au moins 140 caractères
 		end
     describe "#welcome_message" do
-      it { expect(@listing).to validate_presence_of(:welcome_message) }
+      # vérifie que le message de bienvenue est bien obligatoire
 		end
 	end
 
   context "associations" do
-    it { expect(@listing).to have_many(:reservations) }
-    it { expect(@listing).to belong_to(:city) }
-    it { expect(@listing).to belong_to(:admin).class_name('User') }
+    # vérifie que le logement a plusieurs réservations
+    # vérifie que le logement appartient à une ville
+    # vérifie que le logement appartient bien à un admin qui est un User en nom de classe
   end
+
+  context "public instance methods" do
+    describe "#overlaping_reservation" do
+      # vérifie que le listing a bien une méthode d'instance nommée overlaping_reservation? 
+      # vérifie que la méthode marche bien
+    end
+  end
+
 
 end

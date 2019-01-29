@@ -7,35 +7,29 @@ RSpec.describe Reservation, type: :model do
   end
 
   it "has a valid factory" do
-    expect(build(:reservation)).to be_valid
+    # vérifie si la factory est valide
   end
 
   context "validation" do
     it "is valid with valid attributes" do
-      expect(@reservation).to be_a(Reservation)
+      # vérifie si la réservation est bien une réservation
     end
     describe "start_date and end_date" do
     	it "is not valid if start_date is after end_date" do
-	      invalid_reservation = FactoryBot.build(:reservation, start_date: Time.now, end_date: Time.now - 1.day)
-	      expect(invalid_reservation).not_to be_valid
+        # impossible de créer une réservation avec une start_date après la end_date
 	    end
 		end
   end
 
   context "associations" do
-    it { expect(@reservation).to belong_to(:listing) }
-    it { expect(@reservation).to belong_to(:guest).class_name('User') }
+    # vérifie qu'une réservation appartient bien au listing
+    # vérifie qu'une réservation appartient bien à son guest, avec user en nom de classe
   end
 
   context "public instance methods" do
     describe "#length" do
-      it { expect(@reservation).to respond_to(:length) }
-      it "should calculate length between start_date and end_date" do
-	      reservation_1 = FactoryBot.create(:reservation, start_date: Time.now, end_date: Time.now + 3.day)
-	      expect(reservation_1.length).to eq(259200)
-	      reservation_2 = FactoryBot.create(:reservation, start_date: Time.now, end_date: Time.now + 2.day)
-	      expect(reservation_2.length).to eq(172800)
-    	end
+      # vérifie que le listing a bien une méthode d'instance nommée length 
+      # vérifie que la méthode marche bien
 		end
   end
 end
