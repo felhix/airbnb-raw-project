@@ -10,13 +10,3 @@ There should be four models :
 - `Listing`
 - `Reservation`
 
-## Tests
-Stack for tests include :
-
-- Rspec
-- Factory_bot
-- nyan-cat-formatter
-- shoulda_matchers
-
-To run the tests : `$ rspec`
-
